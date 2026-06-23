@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmad Faisin, SE. - Portofolio Desain Grafis Modern</title>
+    
+    <!-- Google Fonts: Plus Jakarta Sans for premium modern layout -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&family=Playfair+Display:ital,wght=0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Three.js Library CDN for Interactive 3D Elements -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+            transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .font-serif-title {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Color Variable Definitions for Dynamic Themes */
+        .theme-midnight {
+            --bg-primary: #070b13;
+            --bg-secondary: #0f172a;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: rgba(249, 115, 22, 0.15);
+            --shadow-color: rgba(249, 115, 22, 0.05);
+            --badge-bg: rgba(249, 115, 22, 0.1);
+        }
+
+        .theme-cream {
+            --bg-primary: #FAF6F0;
+            --bg-secondary: #FFF;
+            --bg-card: rgba(255, 255, 255, 0.9);
+            --text-primary: #1C1917;
+            --text-secondary: #6B6661;
+            --border-color: rgba(249, 115, 22, 0.2);
+            --shadow-color: rgba(120, 113, 108, 0.08);
+            --badge-bg: rgba(249, 115, 22, 0.08);
+        }
+
+        .theme-minimalist {
+            --bg-primary: #F4F4F6;
+            --bg-secondary: #FFFFFF;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --text-primary: #18181B;
+            --text-secondary: #52525B;
+            --border-color: rgba(249, 115, 22, 0.15);
+            --shadow-color: rgba(24, 24, 27, 0.05);
+            --badge-bg: rgba(249, 115, 22, 0.07);
+        }
+
+        /* Applying variables to custom classes */
+        .custom-bg-primary { background-color: var(--bg-primary); }
+        .custom-bg-secondary { background-color: var(--bg-secondary); }
+        .custom-bg-card { background-color: var(--bg-card); }
+        .custom-text-primary { color: var(--text-primary); }
+        .custom-text-secondary { color: var(--text-secondary); }
+        .custom-border { border-color: var(--border-color); }
+        .custom-badge-bg { background-color: var(--badge-bg); }
+
+        @keyframes softFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(0.5deg); }
+        }
+
+        @keyframes softFloatCentered {
+            0%, 100% { transform: translateX(-54%) translateY(0) rotate(0deg); }
+            50% { transform: translateX(-54%) translateY(-8px) rotate(0.5deg); }
+        }
+
+        @keyframes pulseSoft {
+            0%, 100% { opacity: 0.25; transform: scale(1); }
+            50% { opacity: 0.45; transform: scale(1.05); }
+        }
+
+        .animate-soft-float {
+            animation: softFloat 6s ease-in-out infinite;
+        }
+
+        .animate-soft-float-centered {
+            animation: softFloatCentered 6s ease-in-out infinite;
+        }
+
+        .animate-pulse-soft {
+            animation: pulseSoft 8s ease-in-out infinite;
+        }
+
+        /* Hover animations for images */
+        .hover-zoom-img img {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hover-zoom-img:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Scroll Reveal States */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #F97316;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #EA580C;
+        }
+
+        /* Horizontal Infinite Marquee Scroll Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 35s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="theme-midnight custom-bg-primary custom-text-primary overflow-x-hidden">
+
+    <!-- NAVIGATION BAR -->
+    <header class="fixed top-0 left-0 w-full z-40 transition-all duration-300 backdrop-blur-md custom-border border-b bg-opacity-80" id="main-header">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Brand Logo (Updated with Imgbox PNG Logo Graphic) -->
+            <a href="#" class="flex items-center group">
+                <img src="https://images2.imgbox.com/fa/b0/AnoZb686_o.png" alt="AF Graphees Logo Header" class="h-8 md:h-10 w-auto object-contain transform transition-transform group-hover:scale-105 duration-300">
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center gap-8 font-medium">
+                <a href="#hero" class="hover:text-orange-500 transition-colors duration-300 text-sm">Beranda</a>
+                <a href="#about" class="hover:text-orange-500 transition-colors duration-300 text-sm">Tentang</a>
+                <a href="#portfolio" class="hover:text-orange-500 transition-colors duration-300 text-sm">Karya</a>
+                <a href="#process" class="hover:text-orange-500 transition-colors duration-300 text-sm">Alur Kerja</a>
+                <a href="#marketplaces" class="hover:text-orange-500 transition-colors duration-300 text-sm">Marketplace</a>
+                <a href="#contact" class="hover:text-orange-500 transition-colors duration-300 text-sm">Hubungi</a>
+            </nav>
+
+            <!-- Theme Selector and CTA Button -->
+            <div class="flex items-center gap-4">
+                <!-- Theme Pills Select -->
+                <div class="custom-bg-secondary p-1 rounded-full border custom-border flex gap-1 shadow-sm">
+                    <button onclick="setTheme('midnight')" id="btn-midnight" class="w-8 h-8 rounded-full flex items-center justify-center text-xs transition-all duration-300 bg-orange-500 text-white shadow" title="Midnight Theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <button onclick="setTheme('cream')" id="btn-cream" class="w-8 h-8 rounded-full flex items-center justify-center text-xs transition-all duration-300 hover:text-orange-500 text-slate-400" title="Creamy Vintage Theme">
+                        <i class="fa-solid fa-cookie"></i>
+                    </button>
+                    <button onclick="setTheme('minimalist')" id="btn-minimalist" class="w-8 h-8 rounded-full flex items-center justify-center text-xs transition-all duration-300 hover:text-orange-500 text-slate-400" title="Minimalist Gray Theme">
+                        <i class="fa-solid fa-circle-half-stroke"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Navigation Toggle -->
+                <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 rounded-xl custom-bg-secondary flex items-center justify-center border custom-border text-orange-500 hover:scale-105 transition-transform duration-200">
+                    <i class="fa-solid fa-bars-staggered text-lg" id="menu-icon"></i>
+                </button>
+
+                <a href="https://wa.me/6285117773960" target="_blank" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold text-sm hover:shadow-lg hover:shadow-orange-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+                    Mari Berdiskusi
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden custom-bg-primary border-b custom-border py-6 px-6 flex flex-col gap-4 absolute top-full left-0 w-full shadow-xl">
+            <a href="#hero" onclick="toggleMobileMenu()" class="py-2 border-b border-orange-500/10 custom-text-primary hover:text-orange-500 font-medium">Beranda</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="py-2 border-b border-orange-500/10 custom-text-primary hover:text-orange-500 font-medium">Tentang</a>
+            <a href="#portfolio" onclick="toggleMobileMenu()" class="py-2 border-b border-orange-500/10 custom-text-primary hover:text-orange-500 font-medium">Karya</a>
+            <a href="#process" onclick="toggleMobileMenu()" class="py-2 border-b border-orange-500/10 custom-text-primary hover:text-orange-500 font-medium">Alur Kerja</a>
+            <a href="#marketplaces" onclick="toggleMobileMenu()" class="py-2 border-b border-orange-500/10 custom-text-primary hover:text-orange-500 font-medium">Marketplace</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="py-2 custom-text-primary hover:text-orange-500 font-medium">Hubungi</a>
+            <a href="https://wa.me/6285117773960" target="_blank" onclick="toggleMobileMenu()" class="w-full text-center py-3 rounded-xl bg-orange-500 text-white font-semibold flex items-center justify-center gap-2 mt-2 shadow-lg shadow-orange-500/10">
+                Mari Berdiskusi <i class="fa-solid fa-arrow-right text-sm"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="min-h-screen pt-32 pb-0 relative flex items-end overflow-hidden">
+        <!-- Floating Fluid Background Shapes -->
+        <div class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-gradient-to-br from-orange-500/20 to-transparent blur-3xl animate-pulse-soft"></div>
+        <div class="absolute top-1/2 -right-20 w-[450px] h-[450px] rounded-full bg-gradient-to-bl from-amber-500/10 to-transparent blur-3xl animate-pulse-soft" style="animation-delay: 2s;"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+            <!-- 3-Column Responsive Layout with balanced proportions -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                
+                <!-- Left Column: Big Headline & Greeting with increased line spacing and higher z-index -->
+                <div class="lg:col-span-4 flex flex-col justify-center space-y-6 lg:space-y-8 order-2 lg:order-1 pb-12 lg:pb-24 relative z-20">
+                    <div class="space-y-4">
+                        <span class="text-xs sm:text-sm font-extrabold tracking-widest text-orange-500 uppercase block">HELLO EVERYONE, Saya</span>
+                        <h1 class="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-[1.35] custom-text-primary">
+                            Ahmad <br>
+                            Faisin, SE<span class="text-orange-500">.</span>
+                        </h1>
+                        <p class="text-xl sm:text-2xl font-serif-title italic font-normal text-orange-500 mt-2">Graphic Designer</p>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-wrap items-center gap-4">
+                        <a href="#about" class="px-8 py-4 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-bold tracking-wide shadow-lg shadow-orange-500/20 hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 flex items-center gap-3">
+                            Tentang Saya
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Center Column: Seamless Portrait centered and pushed slightly left inside depth stack -->
+                <div class="lg:col-span-5 flex justify-center items-end order-1 lg:order-2 mt-8 lg:mt-0 relative h-[450px] sm:h-[550px] lg:h-[600px] xl:h-[750px] overflow-visible z-10">
+                    <!-- Soft Blurred Circular Shape matching the orange theme accent (Gaussian Blur style) at bottom layer -->
+                    <div class="absolute w-80 h-80 sm:w-[460px] sm:h-[460px] rounded-full bg-orange-500 opacity-30 blur-[90px] animate-pulse-soft transform -translate-y-10 z-0"></div>
+                    
+                    <!-- Portrait Wrapper - Centered, offset-x slightly left, positioned above glow but behind content columns -->
+                    <div class="relative w-full h-full flex justify-center items-end z-10 overflow-visible">
+                        <img src="https://images2.imgbox.com/d6/a6/9SsbMlos_o.png" alt="Ahmad Faisin, SE. - Lead Creative Professional" class="absolute bottom-0 left-1/2 -translate-x-[54%] h-[110%] sm:h-[120%] lg:h-[130%] w-auto max-w-none object-contain object-bottom select-none pointer-events-none drop-shadow-[0_20px_50px_rgba(249,115,22,0.35)] transform origin-bottom animate-soft-float-centered" onerror="this.src='https://placehold.co/600x700/0f172a/f97316?text=Ahmad+Faisin';">
+                    </div>
+                </div>
+
+                <!-- Right Column: About Me Short description & Find Me On social row with higher z-index -->
+                <div class="lg:col-span-3 flex flex-col justify-center space-y-6 lg:space-y-8 order-3 lg:order-3 pb-12 lg:pb-24 relative z-20">
+                    <div class="space-y-3">
+                        <h3 class="text-lg font-bold tracking-wider text-orange-500 uppercase font-serif-title">About Me</h3>
+                        <p class="text-sm sm:text-base custom-text-secondary leading-relaxed text-justify lg:text-left">
+                            Perkenalkan nama saya Faisin, <span class="text-orange-500 font-semibold">"AF"</span> diambil dari inisial nama saya yang digabung dengan <span class="text-orange-500 font-semibold">"GRAPHEES"</span> untuk memberikan nuansa "Grafis" di dalamnya. Saya Mendapat gelar <span class="text-orange-500 font-semibold">Sarjana Ekonomi</span> dari Institut Agama Islam Al-Khairat Pamekasan pada tahun 2025.
+                        </p>
+                    </div>
+
+                    <!-- "Find me on" Social Links (Updated Links) -->
+                    <div class="space-y-3">
+                        <span class="text-xs font-bold tracking-widest text-orange-500 uppercase block">Find me on</span>
+                        <div class="flex items-center gap-3">
+                            <a href="https://wa.me/6285117773960" target="_blank" class="w-10 h-10 rounded-full custom-bg-secondary border custom-border flex items-center justify-center text-orange-500 hover:bg-orange-500 hover:text-white hover:scale-110 transition-all duration-300" title="WhatsApp">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </a>
+                            <a href="https://www.instagram.com/a.faaiziinn/" target="_blank" class="w-10 h-10 rounded-full custom-bg-secondary border custom-border flex items-center justify-center text-orange-500 hover:bg-orange-500 hover:text-white hover:scale-110 transition-all duration-300" title="Instagram Personal">
+                                <i class="fa-brands fa-instagram text-lg"></i>
+                            </a>
+                            <a href="https://www.instagram.com/af.graphees/" target="_blank" class="w-10 h-10 rounded-full custom-bg-secondary border custom-border flex items-center justify-center text-orange-500 hover:bg-orange-500 hover:text-white hover:scale-110 transition-all duration-300" title="Instagram Portfolio">
+                                <i class="fa-brands fa-instagram text-lg"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@faaiziinn" target="_blank" class="w-10 h-10 rounded-full custom-bg-secondary border custom-border flex items-center justify-center text-orange-500 hover:bg-orange-500 hover:text-white hover:scale-110 transition-all duration-300" title="TikTok">
+                                <i class="fa-brands fa-tiktok text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Simple Stats Row -->
+                    <div class="pt-6 border-t custom-border grid grid-cols-2 gap-4">
+                        <div>
+                            <div class="text-2xl font-extrabold text-orange-500 font-serif-title">5+</div>
+                            <div class="text-[10px] custom-text-secondary uppercase tracking-wider mt-1">Tahun Pengalaman</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-extrabold text-orange-500 font-serif-title">120+</div>
+                            <div class="text-[10px] custom-text-secondary uppercase tracking-wider mt-1">Proyek Selesai</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-24 custom-bg-secondary relative">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            
+            <!-- Left Side: Interactive Bezier Playground -->
+            <div class="lg:col-span-5 relative reveal">
+                <!-- Vector Artboard Card -->
+                <div class="relative w-full max-w-[380px] sm:max-w-[420px] mx-auto aspect-[4/5] custom-bg-primary border-2 custom-border rounded-3xl shadow-2xl p-6 overflow-hidden flex flex-col justify-between">
+                    <!-- Top Ribbon bar -->
+                    <div class="flex justify-between items-center pb-4 border-b border-orange-500/10">
+                        <div class="flex gap-1.5">
+                            <span class="w-3 h-3 rounded-full bg-orange-500/30"></span>
+                            <span class="w-3 h-3 rounded-full bg-orange-500/50"></span>
+                            <span class="w-3 h-3 rounded-full bg-orange-500"></span>
+                        </div>
+                        <span class="text-[10px] tracking-widest font-mono text-orange-500 uppercase font-semibold">Artboard - 01</span>
+                        <i class="fa-solid fa-crop-simple text-orange-500 text-xs"></i>
+                    </div>
+
+                    <!-- Middle: Interactive Pen-Tool playground -->
+                    <div class="relative flex-1 my-4 flex items-center justify-center bg-orange-500/5 rounded-2xl overflow-hidden border border-orange-500/5 cursor-crosshair" id="interactive-box">
+                        <!-- Bezier Drawing SVG -->
+                        <svg class="absolute inset-0 w-full h-full pointer-events-none" id="bezier-svg">
+                            <path d="M 50 150 C 120 40, 260 260, 330 150" fill="none" stroke="#F97316" stroke-width="3" stroke-linecap="round" id="bezier-path"/>
+                            <line x1="50" y1="150" x2="120" y2="40" stroke="rgba(249,115,22,0.4)" stroke-width="1" stroke-dasharray="2,2" id="guide-line1" />
+                            <line x1="330" y1="150" x2="260" y2="260" stroke="rgba(249,115,22,0.4)" stroke-width="1" stroke-dasharray="2,2" id="guide-line2" />
+                            <circle cx="50" cy="150" r="5" fill="#FAF6F0" stroke="#F97316" stroke-width="2" />
+                            <circle cx="330" cy="150" r="5" fill="#FAF6F0" stroke="#F97316" stroke-width="2" />
+                            <circle cx="120" cy="40" r="4" fill="#F97316" id="control-node1" />
+                            <circle cx="260" cy="260" r="4" fill="#F97316" id="control-node2" />
+                        </svg>
+
+                        <!-- Float overlay instructions inside artboard -->
+                        <div class="absolute inset-0 flex flex-col justify-center items-center p-6 text-center select-none pointer-events-none">
+                            <i class="fa-solid fa-circle-nodes text-orange-500 text-4xl mb-3 animate-pulse"></i>
+                            <h3 class="text-lg font-extrabold uppercase tracking-wide leading-tight custom-text-primary">Eksplorasi Kurva</h3>
+                            <p class="text-[11px] custom-text-secondary mt-1 max-w-[200px]">Gerakkan kursor Anda di area ini untuk menggambar kurva secara interaktif.</p>
+                        </div>
+                    </div>
+
+                    <!-- Bottom tools bar -->
+                    <div class="flex justify-between items-center pt-4 border-t border-orange-500/10">
+                        <div class="flex gap-3 text-xs custom-text-secondary">
+                            <i class="fa-solid fa-bezier-curve text-orange-500"></i>
+                            <i class="fa-solid fa-pen-nib hover:text-orange-500 cursor-pointer"></i>
+                            <i class="fa-solid fa-signature hover:text-orange-500 cursor-pointer"></i>
+                            <i class="fa-solid fa-palette hover:text-orange-500 cursor-pointer"></i>
+                        </div>
+                        <span class="text-[11px] custom-text-secondary font-mono">X: 120px | Y: 240px</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Descriptive Bio and Toolkits -->
+            <div class="lg:col-span-7 flex flex-col justify-center space-y-8 reveal">
+                <div class="space-y-4">
+                    <h2 class="text-sm font-extrabold tracking-widest text-orange-500 uppercase flex items-center gap-2">
+                        <span class="w-6 h-[2px] bg-orange-500"></span> Tentang Kreator
+                    </h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight custom-text-primary">
+                        Mendedikasikan Kreativitas dan Pengaruh Visual untuk Menghadirkan <span class="font-serif-title italic font-normal text-orange-500">Hasil Nyata</span>.
+                    </h3>
+                </div>
+
+                <p class="custom-text-secondary leading-relaxed text-justify lg:text-left text-sm sm:text-base">
+                    Saya sebagai Influencer dan Content Creator memulai kreatifitas dari kesenangan berbagi informasi melalui media visual yang kemudian saya proses dengan tekun untuk terus belajar serta menangani banyak projek dari berbagai klien, UMKM, lembaga pendidikan hingga perusahaan besar.
+                </p>
+
+                <!-- Core Creative Capabilities -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg custom-badge-bg flex items-center justify-center text-orange-500 shrink-0">
+                            <i class="fa-solid fa-bezier-curve text-sm"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm custom-text-primary">Identitas Visual & Branding</h4>
+                            <p class="text-xs custom-text-secondary mt-0.5">Pembuatan logo unik, pedoman brand, desain kemasan, and media cetak premium.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg custom-badge-bg flex items-center justify-center text-orange-500 shrink-0">
+                            <i class="fa-solid fa-print text-sm"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm custom-text-primary">Desain Digital Printing</h4>
+                            <p class="text-xs custom-text-secondary mt-0.5">Pembuatan media promosi cetak seperti banner, brosur, kaos, kartu nama, dan cinderamata dengan kualitas warna presisi.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg custom-badge-bg flex items-center justify-center text-orange-500 shrink-0">
+                            <i class="fa-solid fa-icons text-sm"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm custom-text-primary">Ilustrasi & Tipografi</h4>
+                            <p class="text-xs custom-text-secondary mt-0.5">Sketsa kustom, desain vektor modern, serta pengerjaan seni tipografi khusus.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg custom-badge-bg flex items-center justify-center text-orange-500 shrink-0">
+                            <i class="fa-solid fa-bullhorn text-sm"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm custom-text-primary">Desain Iklan & Media Sosial</h4>
+                            <p class="text-xs custom-text-secondary mt-0.5">Materi promosi sosial media yang estetik dan mampu mendongkrak konversi.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Creative ToolStack Grid (Updated according to user's list) -->
+                <div class="pt-6 border-t custom-border">
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-orange-500 mb-4">Aplikasi & Alat Kerja Favorit</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3.5 py-1.5 rounded-full custom-badge-bg border custom-border text-xs font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-feather text-orange-500"></i> Affinity by Canva
+                        </span>
+                        <span class="px-3.5 py-1.5 rounded-full custom-badge-bg border custom-border text-xs font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-bezier-curve text-orange-500"></i> Corel Draw
+                        </span>
+                        <span class="px-3.5 py-1.5 rounded-full custom-badge-bg border custom-border text-xs font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-wand-magic-sparkles text-orange-500"></i> Photoshop
+                        </span>
+                        <span class="px-3.5 py-1.5 rounded-full custom-badge-bg border custom-border text-xs font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-pen-nib text-orange-500"></i> Sketchbook Pro
+                        </span>
+                        <span class="px-3.5 py-1.5 rounded-full custom-badge-bg border custom-border text-xs font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-palette text-orange-500"></i> Canva
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section id="portfolio" class="py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4 reveal">
+                <h2 class="text-sm font-extrabold tracking-widest text-orange-500 uppercase flex items-center justify-center gap-2">
+                    <span class="w-6 h-[2px] bg-orange-500"></span> Galeri Hasil Karya
+                </h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight custom-text-primary">
+                    Karya Unggulan Pilihan
+                </h3>
+                <p class="custom-text-secondary text-sm leading-relaxed text-justify lg:text-center">
+                    Berikut ini beberapa hasil karya terbaik kami dari berbagai kategori desain. Gunakan tombol eksplorasi di bawah untuk membuka detail spesifik dari galeri hasil desain secara lengkap.
+                </p>
+            </div>
+
+            <!-- Block 1: Running/Marquee Horizontal Featured Designs Carousel -->
+            <div class="relative w-full overflow-hidden py-4 mb-16 rounded-3xl bg-orange-500/[0.02] border custom-border reveal">
+                <!-- Fade overlays for sides mapping dynamic themes -->
+                <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-transparent z-20 pointer-events-none" style="background-image: linear-gradient(to right, var(--bg-primary), transparent)"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-transparent z-20 pointer-events-none" style="background-image: linear-gradient(to left, var(--bg-primary), transparent)"></div>
+                
+                <div class="flex items-center whitespace-nowrap overflow-hidden">
+                    <!-- Dynamic Marquee Track (Includes 6 updated works, repeated for seamless loops) -->
+                    <div class="flex gap-8 items-center animate-marquee">
+                        <!-- Featured 1 -->
+                        <div class="w-80 shrink-0 group cursor-pointer inline-block" onclick="openPortfolioModal(101)">
+                            <div class="relative rounded-2xl overflow-hidden hover-zoom-img shadow-lg border custom-border aspect-[4/3]">
+                                <img src="https://images2.imgbox.com/8d/fa/A4NCb8yY_o.jpg" alt="PT. KARYA RAFA MADINA" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-orange-950/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                                    <span class="text-[10px] text-orange-400 font-extrabold uppercase tracking-widest mb-1">Logo & Identitas</span>
+                                    <h4 class="text-base font-bold text-white whitespace-normal text-ellipsis overflow-hidden">PT. KARYA RAFA MADINA</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Featured 2 -->
+                        <div class="w-80 shrink-0 group cursor-pointer inline-block" onclick="openPortfolioModal(301)">
+                            <div class="relative rounded-2xl overflow-hidden hover-zoom-img shadow-lg border custom-border aspect-[4/3]">
+                                <img src="https://images2.imgbox.com/0a/d4/IOIPIIxP_o.jpg" alt="FEED INSTAGRAM" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-orange-950/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                                    <span class="text-[10px] text-orange-400 font-extrabold uppercase tracking-widest mb-1">Sosial Media</span>
+                                    <h4 class="text-base font-bold text-white whitespace-normal text-ellipsis overflow-hidden">FEED INSTAGRAM</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Featured 3 -->
+                        <div class="w-80 shrink-0 group cursor-pointer inline-block" onclick="openPortfolioModal(401)">
+                            <div class="relative rounded-2xl overflow-hidden hover-zoom-img shadow-lg border custom-border aspect-[4/3]">
+                                <img src="https://images2.imgbox.com/fb/27/1JWiYUkK_o.jpg" alt="ARKA PERFUME" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-orange-950/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                                    <span class="text-[10px] text-orange-400 font-extrabold uppercase tracking-widest mb-1">Logo & Identitas</span>
+                                    <h4 class="text-base font-bold text-white whitespace-normal text-ellipsis overflow-hidden">ARKA PERFUME</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Featured 4 -->
+                        <div class="w-80 shrink-0 group cursor-pointer inline-block" onclick="openPortfolioModal(102)">
+                            <div class="relative rounded-2xl overflow-hidden hover-zoom-img shadow-lg border custom-border aspect-[4/3]">
+                                <img src="https://images2.imgbox.com/8a/e4/YjzpHn8i_o.jpg" alt="BALAGHAH PRAKTIS" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-orange-950/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                                    <span class="text-[10px] text-orange-400 font-extrabold uppercase tracking-widest mb-1">Desain Sampul Buku</span>
+                                    <h4 class="text-base font-bold text-white whitespace-normal text-ellipsis overflow-hidden">BALAGHAH PRAKTIS</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Featured 5 -->
+                        <div class="w-80 shrink-0 group cursor-pointer inline-block" onclick="openPortfolioModal(201)">
+                            <div class="relative rounded-2xl overflow-hidden hover-zoom-img shadow-lg border custom-border aspect-[4/3]">
+                                <img src="https://images2.imgbox.com/c1/82/n1zHl10R_o.jpg" alt="GEBYAR PENGAJIAN AKBAR-19" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-orange-950/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                                    <span class="text-[10px] text-orange-400 font-extrabold uppercase tracking-widest mb-1">Logo & Identitas</span>
+                                    <h4 class="text-base font-bold text-white whitespace-normal text-ellipsis overflow-hidden">PENGAJIAN AKBAR-19</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Featured 6 -->
+                        <div class="w-80 shrink-0 group cursor-pointer inline-block" onclick="openPortfolioModal(501)">
+                            <div class="relative rounded-2xl overflow-hidden hover-zoom-img shadow-lg border custom-border aspect-[4/3]">
+                                <img src="https://images2.imgbox.com/16/f1/2UCfCJD6_o.jpg" alt="PAMFLET & POSTER EVENT" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-orange-950/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                                    <span class="text-[10px] text-orange-400 font-extrabold uppercase tracking-widest mb-1">Pamflet & Poster</span>
+                                    <h4 class="text-base font-bold text-white whitespace-normal text-ellipsis overflow-hidden">PAMFLET & POSTER EVENT</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- DUPLICATED SET FOR SEAMLESS INFINITE SCROLLING -->
+                        <!-- Featured 1 -->
+                        <div class="w-80 shrink-0 group cursor-pointer inline-block" onclick="openPortfolioModal(101)">
+                            <div class="relative rounded-2xl overflow-hidden hover-zoom-img shadow-lg border custom-border aspect-[4/3]">
+                                <img src="https://images2.imgbox.com/8d/fa/A4NCb8yY_o.jpg" alt="PT. KARYA RAFA MADINA" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-orange-950/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                                    <span class="text-[10px] text-orange-400 font-extrabold uppercase tracking-widest mb-1">Logo & Identitas</span>
+                                    <h4 class="text-base font-bold text-white whitespace-normal text-ellipsis overflow-hidden">PT. KARYA RAFA MADINA</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Featured 2 -->
+                        <div class="w-80 shrink-0 group cursor-pointer inline-block" onclick="openPortfolioModal(301)">
+                            <div class="relative rounded-2xl overflow-hidden hover-zoom-img shadow-lg border custom-border aspect-[4/3]">
+                                <img src="https://images2.imgbox.com/0a/d4/IOIPIIxP_o.jpg" alt="FEED INSTAGRAM" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-orange-950/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                                    <span class="text-[10px] text-orange-400 font-extrabold uppercase tracking-widest mb-1">Sosial Media</span>
+                                    <h4 class="text-base font-bold text-white whitespace-normal text-ellipsis overflow-hidden">FEED INSTAGRAM</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Featured 3 -->
+                        <div class="w-80 shrink-0 group cursor-pointer inline-block" onclick="openPortfolioModal(401)">
+                            <div class="relative rounded-2xl overflow-hidden hover-zoom-img shadow-lg border custom-border aspect-[4/3]">
+                                <img src="https://images2.imgbox.com/fb/27/1JWiYUkK_o.jpg" alt="ARKA PERFUME" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-orange-950/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                                    <span class="text-[10px] text-orange-400 font-extrabold uppercase tracking-widest mb-1">Logo & Identitas</span>
+                                    <h4 class="text-base font-bold text-white whitespace-normal text-ellipsis overflow-hidden">ARKA PERFUME</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Featured 4 -->
+                        <div class="w-80 shrink-0 group cursor-pointer inline-block" onclick="openPortfolioModal(102)">
+                            <div class="relative rounded-2xl overflow-hidden hover-zoom-img shadow-lg border custom-border aspect-[4/3]">
+                                <img src="https://images2.imgbox.com/8a/e4/YjzpHn8i_o.jpg" alt="BALAGHAH PRAKTIS" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-orange-950/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                                    <span class="text-[10px] text-orange-400 font-extrabold uppercase tracking-widest mb-1">Desain Sampul Buku</span>
+                                    <h4 class="text-base font-bold text-white whitespace-normal text-ellipsis overflow-hidden">BALAGHAH PRAKTIS</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Featured 5 -->
+                        <div class="w-80 shrink-0 group cursor-pointer inline-block" onclick="openPortfolioModal(201)">
+                            <div class="relative rounded-2xl overflow-hidden hover-zoom-img shadow-lg border custom-border aspect-[4/3]">
+                                <img src="https://images2.imgbox.com/c1/82/n1zHl10R_o.jpg" alt="GEBYAR PENGAJIAN AKBAR-19" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-orange-950/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                                    <span class="text-[10px] text-orange-400 font-extrabold uppercase tracking-widest mb-1">Logo & Identitas</span>
+                                    <h4 class="text-base font-bold text-white whitespace-normal text-ellipsis overflow-hidden">PENGAJIAN AKBAR-19</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Featured 6 -->
+                        <div class="w-80 shrink-0 group cursor-pointer inline-block" onclick="openPortfolioModal(501)">
+                            <div class="relative rounded-2xl overflow-hidden hover-zoom-img shadow-lg border custom-border aspect-[4/3]">
+                                <img src="https://images2.imgbox.com/16/f1/2UCfCJD6_o.jpg" alt="PAMFLET & POSTER EVENT" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-orange-950/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                                    <span class="text-[10px] text-orange-400 font-extrabold uppercase tracking-widest mb-1">Pamflet & Poster</span>
+                                    <h4 class="text-base font-bold text-white whitespace-normal text-ellipsis overflow-hidden">PAMFLET & POSTER EVENT</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Trigger Button: Minimalist Circle Arrow Facing Down to Expand -->
+            <div class="flex justify-center mb-16 reveal">
+                <button onclick="toggleExtendedPortfolio()" id="expand-portfolio-btn" class="group w-14 h-14 rounded-full bg-orange-500/10 hover:bg-orange-500 text-orange-500 hover:text-white flex items-center justify-center border border-orange-500/20 shadow-md transition-all duration-500" title="Eksplorasi Seluruh Kategori Karya">
+                    <i class="fa-solid fa-chevron-down text-lg transition-transform duration-500 animate-bounce group-hover:text-white" id="expand-btn-icon"></i>
+                </button>
+            </div>
+
+            <!-- Block 2: Expandable Container with 1 High Quality Full Vertical Image -->
+            <div id="extended-portfolio-container" class="hidden opacity-0 h-0 overflow-hidden transition-all duration-700 ease-in-out pt-8 border-t border-orange-500/15">
+                
+                <!-- Seamless Vertical Canvas Showcase (No category banners, clean layout) -->
+                <div class="w-full flex flex-col items-center justify-center p-4 rounded-3xl bg-opacity-20 custom-bg-secondary border custom-border">
+                    <div class="w-full max-w-4xl overflow-hidden rounded-2xl shadow-2xl">
+                        <!-- Main High Quality Vertical Canvas -->
+                        <a href="https://imgbox.com/WasW6NfT" target="_blank">
+                            <img src="https://images2.imgbox.com/39/a0/WasW6NfT_o.jpg" alt="Ahmad Faisin Detailed Portfolio Canvas" class="w-full h-auto object-contain block"/>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROCESS SECTION -->
+    <section id="process" class="py-24 custom-bg-secondary relative">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4 reveal">
+                <h2 class="text-sm font-extrabold tracking-widest text-orange-500 uppercase flex items-center justify-center gap-2">
+                    <span class="w-6 h-[2px] bg-orange-500"></span> Metodologi Kerja
+                </h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight leading-none custom-text-primary">
+                    Proses Kreatif Menuju Sukses
+                </h3>
+                <p class="custom-text-secondary text-sm">Mekanisme dan proses pengerjaan desain yang kami tangani untuk setiap projek</p>
+            </div>
+
+            <!-- Horizontal / Stacked Timeline cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+                <!-- Timeline Connective Bar in Desktop -->
+                <div class="hidden lg:block absolute top-[68px] left-[10%] right-[10%] h-[2px] border-t-2 border-dashed border-orange-500/25 -z-0"></div>
+
+                <!-- Step 1 Card -->
+                <div class="custom-bg-primary border custom-border p-6 rounded-3xl relative z-10 hover:shadow-xl hover:shadow-orange-500/5 transition-all duration-300 group reveal">
+                    <div class="w-12 h-12 rounded-2xl bg-orange-500 text-white font-extrabold text-lg flex items-center justify-center shadow-lg shadow-orange-500/15 mb-6 group-hover:scale-110 transition-transform">
+                        1
+                    </div>
+                    <h4 class="font-bold text-lg custom-text-primary mb-2 group-hover:text-orange-500 transition-colors">Brief & Riset</h4>
+                    <p class="text-xs custom-text-secondary leading-relaxed text-justify lg:text-left">
+                        Kami mulai dengan mendengarkan kebutuhan utama Anda, mempelajari lanskap industri kompetitor, serta memetakan segmen target pasar potensial.
+                    </p>
+                </div>
+
+                <!-- Step 2 Card -->
+                <div class="custom-bg-primary border custom-border p-6 rounded-3xl relative z-10 hover:shadow-xl hover:shadow-orange-500/5 transition-all duration-300 group reveal" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 rounded-2xl bg-orange-500 text-white font-extrabold text-lg flex items-center justify-center shadow-lg shadow-orange-500/15 mb-6 group-hover:scale-110 transition-transform">
+                        2
+                    </div>
+                    <h4 class="font-bold text-lg custom-text-primary mb-2 group-hover:text-orange-500 transition-colors">Sketsa & Konsep</h4>
+                    <p class="text-xs custom-text-secondary leading-relaxed text-justify lg:text-left">
+                        Proses brainstorming dituangkan ke lembaran sketsa mentah guna mengeksplorasi komposisi tata letak, tipografi, dan makna logis.
+                    </p>
+                </div>
+
+                <!-- Step 3 Card -->
+                <div class="custom-bg-primary border custom-border p-6 rounded-3xl relative z-10 hover:shadow-xl hover:shadow-orange-500/5 transition-all duration-300 group reveal" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 rounded-2xl bg-orange-500 text-white font-extrabold text-lg flex items-center justify-center shadow-lg shadow-orange-500/15 mb-6 group-hover:scale-110 transition-transform">
+                        3
+                    </div>
+                    <h4 class="font-bold text-lg custom-text-primary mb-2 group-hover:text-orange-500 transition-colors">Digitalisasi & Revisi</h4>
+                    <p class="text-xs custom-text-secondary leading-relaxed text-justify lg:text-left">
+                        Sketsa dan konsep terpilih dipindahkan ke software visualisasi digital, kemudian pengolahan serta pengerjaan desain serta disempurnakan berdasarkan umpan balik Anda.
+                    </p>
+                </div>
+
+                <!-- Step 4 Card -->
+                <div class="custom-bg-primary border custom-border p-6 rounded-3xl relative z-10 hover:shadow-xl hover:shadow-orange-500/5 transition-all duration-300 group reveal" style="transition-delay: 300ms;">
+                    <div class="w-12 h-12 rounded-2xl bg-orange-500 text-white font-extrabold text-lg flex items-center justify-center shadow-lg shadow-orange-500/15 mb-6 group-hover:scale-110 transition-transform">
+                        4
+                    </div>
+                    <h4 class="font-bold text-lg custom-text-primary mb-2 group-hover:text-orange-500 transition-colors">Serah Terima</h4>
+                    <p class="text-xs custom-text-secondary leading-relaxed text-justify lg:text-left">
+                        Seluruh file desain final diserahkan dalam berbagai format lengkap siap cetak/digital, lengkap dengan panduan penggunaan praktis.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MARKETPLACES SECTION -->
+    <section id="marketplaces" class="py-24 relative overflow-hidden">
+        <!-- Floating Fluid Background Shapes -->
+        <div class="absolute top-1/2 left-1/4 w-80 h-80 rounded-full bg-gradient-to-br from-orange-500/5 to-transparent blur-3xl animate-pulse-soft"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-gradient-to-tr from-amber-500/5 to-transparent blur-3xl animate-pulse-soft" style="animation-delay: 3s;"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4 reveal">
+                <h2 class="text-sm font-extrabold tracking-widest text-orange-500 uppercase flex items-center justify-center gap-2">
+                    <span class="w-6 h-[2px] bg-orange-500"></span> Toko Digital & Aset Desain
+                </h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight custom-text-primary">
+                    Dapatkan Template & Aset Kreatif Premium
+                </h3>
+                <p class="custom-text-secondary text-sm leading-relaxed text-justify lg:text-center">
+                    Kami aktif mendistribusikan berbagai karya digital berkualitas tinggi, mulai dari aset dan template microstock global hingga buku cetak lokal. Jelajahi dan miliki aset desain terbaik langsung melalui marketplace resmi pilihan Anda di bawah ini.
+                </p>
+            </div>
+
+            <!-- Marketplace Grid Cards (Compact Small Size Layout) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto reveal">
+                
+                <!-- Shutterstock Card -->
+                <a href="https://www.shutterstock.com/g/aefixelstudio?rid=332430329" target="_blank" rel="noopener noreferrer" class="group custom-bg-secondary border custom-border p-4 rounded-2xl hover:shadow-lg hover:shadow-orange-500/5 transition-all duration-300 flex items-center gap-4 relative overflow-hidden">
+                    <div class="w-10 h-10 rounded-xl bg-[#E1251B]/10 text-[#E1251B] flex items-center justify-center shrink-0 text-base font-bold group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <h4 class="font-bold text-sm custom-text-primary group-hover:text-orange-500 transition-colors flex items-center gap-1.5">
+                            Shutterstock
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-50 group-hover:opacity-100 transition-opacity"></i>
+                        </h4>
+                        <p class="text-xs custom-text-secondary truncate mt-0.5">Vektor premium & ilustrasi komersial.</p>
+                    </div>
+                </a>
+
+                <!-- Lynk.id Card -->
+                <a href="https://lynk.id/af.graphees" target="_blank" rel="noopener noreferrer" class="group custom-bg-secondary border custom-border p-4 rounded-2xl hover:shadow-lg hover:shadow-orange-500/5 transition-all duration-300 flex items-center gap-4 relative overflow-hidden">
+                    <div class="w-10 h-10 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center shrink-0 text-base font-bold group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-link"></i>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <h4 class="font-bold text-sm custom-text-primary group-hover:text-orange-500 transition-colors flex items-center gap-1.5">
+                            Lynk.id
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-50 group-hover:opacity-100 transition-opacity"></i>
+                        </h4>
+                        <p class="text-xs custom-text-secondary truncate mt-0.5">Template media sosial & produk digital.</p>
+                    </div>
+                </a>
+
+                <!-- Shopee Card -->
+                <a href="https://shopee.co.id/af.pustaka.studio" target="_blank" rel="noopener noreferrer" class="group custom-bg-secondary border custom-border p-4 rounded-2xl hover:shadow-lg hover:shadow-orange-500/5 transition-all duration-300 flex items-center gap-4 relative overflow-hidden">
+                    <div class="w-10 h-10 rounded-xl bg-[#EE4D2D]/10 text-[#EE4D2D] flex items-center justify-center shrink-0 text-base font-bold group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <h4 class="font-bold text-sm custom-text-primary group-hover:text-orange-500 transition-colors flex items-center gap-1.5">
+                            Shopee Store
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-50 group-hover:opacity-100 transition-opacity"></i>
+                        </h4>
+                        <p class="text-xs custom-text-secondary truncate mt-0.5">Produk cetak, merchandise & buku islami.</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-24 relative overflow-hidden">
+        <!-- Orange Glow Orb behind Form -->
+        <div class="absolute -bottom-40 -right-40 w-96 h-96 rounded-full bg-orange-500/10 blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                <!-- Left Grid: Creative Invitation Content -->
+                <div class="lg:col-span-5 space-y-8 reveal">
+                    <div class="space-y-4">
+                        <h2 class="text-sm font-extrabold tracking-widest text-orange-500 uppercase flex items-center gap-2">
+                            <span class="w-6 h-[2px] bg-orange-500"></span> Mulai Diskusi Proyek
+                        </h2>
+                        <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight leading-none custom-text-primary">
+                            Siap Melahirkan Karya Epik Bersama?
+                        </h3>
+                    </div>
+
+                    <p class="custom-text-secondary leading-relaxed text-justify lg:text-left">
+                        Hubungi kami untuk mendiskusikan visi kreatif Anda. kami siap membantu Anda menciptakan inovasi desain anda.
+                    </p>
+
+                    <!-- Contact Detail Blocks -->
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl custom-badge-bg border custom-border flex items-center justify-center text-orange-500">
+                                <i class="fa-regular fa-envelope text-lg"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-bold uppercase tracking-wider custom-text-secondary">Kirim Email</span>
+                                <p class="text-sm font-bold custom-text-primary mt-0.5">afgraphees@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl custom-badge-bg border custom-border flex items-center justify-center text-orange-500">
+                                <i class="fa-solid fa-phone text-lg"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-bold uppercase tracking-wider custom-text-secondary">Konsultasi WhatsApp</span>
+                                <p class="text-sm font-bold custom-text-primary mt-0.5">+62 851-1777-3960</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl custom-badge-bg border custom-border flex items-center justify-center text-orange-500">
+                                <i class="fa-solid fa-location-dot text-lg"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-bold uppercase tracking-wider custom-text-secondary">Studio Kreatif</span>
+                                <p class="text-sm font-bold custom-text-primary mt-0.5">Pamekasan, Jawa Timur, Indonesia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Grid: WhatsApp Dynamic Form Integration -->
+                <div class="lg:col-span-7 reveal">
+                    <form id="creative-contact-form" onsubmit="handleWhatsAppSubmit(event)" class="custom-bg-secondary p-8 sm:p-10 rounded-3xl border custom-border shadow-xl space-y-6">
+                        
+                        <div class="space-y-2">
+                            <label for="name" class="text-xs font-bold tracking-wider uppercase custom-text-secondary">Nama Lengkap</label>
+                            <input type="text" name="name" id="name" required class="w-full px-5 py-3.5 rounded-xl custom-bg-primary border custom-border focus:outline-none focus:border-orange-500 custom-text-primary transition-all placeholder:text-zinc-500 text-sm" placeholder="Nama Anda">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="category_select" class="text-xs font-bold tracking-wider uppercase custom-text-secondary">Pilihan Kategori Desain</label>
+                            <select id="category_select" onchange="checkCategorySelection(this.value)" required class="w-full px-5 py-3.5 rounded-xl custom-bg-primary border custom-border focus:outline-none focus:border-orange-500 custom-text-primary transition-all text-sm">
+                                <option value="" disabled selected>Pilih Kategori Desain...</option>
+                                <option value="Logo">Logo</option>
+                                <option value="Social Media">Social Media</option>
+                                <option value="Sampul Buku">Sampul Buku</option>
+                                <option value="Banner">Banner</option>
+                                <option value="Undangan">Undangan</option>
+                                <option value="Event">Event</option>
+                                <option value="Pamflet/ Poster">Pamflet/ Poster</option>
+                                <option value="Kalender">Kalender</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
+
+                        <!-- Hidden by default, displayed dynamically if 'Lainnya' is selected -->
+                        <div id="other_category_container" class="space-y-2 hidden">
+                            <label for="other_category_input" class="text-xs font-bold tracking-wider uppercase custom-text-secondary">Sebutkan Kategori Desain Lainnya</label>
+                            <input type="text" id="other_category_input" class="w-full px-5 py-3.5 rounded-xl custom-bg-primary border custom-border focus:outline-none focus:border-orange-500 custom-text-primary transition-all placeholder:text-zinc-500 text-sm" placeholder="Sebutkan jenis desain yang ingin Anda buat">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="message" class="text-xs font-bold tracking-wider uppercase custom-text-secondary">Pesan Tambahan (Brief / Keterangan Lain)</label>
+                            <textarea name="message" id="message" rows="4" class="w-full px-5 py-3.5 rounded-xl custom-bg-primary border custom-border focus:outline-none focus:border-orange-500 custom-text-primary transition-all placeholder:text-zinc-500 text-sm resize-none" placeholder="Tulis instruksi atau catatan brief proyek di sini jika ada..."></textarea>
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold tracking-wide shadow-lg shadow-orange-500/10 hover:shadow-orange-500/25 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 flex items-center justify-center gap-2">
+                            <span id="btn-text">Kirim Pesan</span>
+                            <i id="btn-icon" class="fa-regular fa-paper-plane text-xs"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FLOATING SUCCESS/ERROR TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-10 opacity-0 transition-all duration-500 pointer-events-none">
+        <div id="toast-card" class="border px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3">
+            <div id="toast-icon-bg" class="w-8 h-8 rounded-full flex items-center justify-center text-white">
+                <i id="toast-icon" class="fa-solid text-sm"></i>
+            </div>
+            <div>
+                <h5 id="toast-title" class="font-bold text-sm text-white">Status</h5>
+                <p id="toast-desc" class="text-xs text-slate-300 mt-0.5">Detail deskripsi toast.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PORTFOLIO DETAILS MODAL -->
+    <div id="project-modal" class="fixed inset-0 z-50 overflow-y-auto hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-md" onclick="closePortfolioModal()"></div>
+        
+        <div class="relative custom-bg-secondary w-full max-w-4xl rounded-3xl border custom-border shadow-2xl overflow-hidden z-10 max-h-[90vh] flex flex-col">
+            <div class="flex justify-between items-center px-6 py-4 border-b custom-border sticky top-0 custom-bg-secondary z-20">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-orange-500" id="modal-category-badge">Identitas Brand</span>
+                <button onclick="closePortfolioModal()" class="w-8 h-8 rounded-full custom-bg-primary border custom-border flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all duration-200">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <div class="overflow-y-auto flex-1 p-6 sm:p-8 space-y-8">
+                <div class="rounded-2xl overflow-hidden aspect-[4/3] border custom-border relative">
+                    <img id="modal-image" src="" alt="" class="w-full h-full object-cover">
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <div class="lg:col-span-8 space-y-4">
+                        <h3 class="text-2xl sm:text-3xl font-extrabold custom-text-primary" id="modal-title">Aetheria Cosmetics</h3>
+                        <p class="custom-text-secondary leading-relaxed text-sm sm:text-base text-justify lg:text-left" id="modal-desc">
+                            Ini adalah deskripsi rincian proyek desain.
+                        </p>
+                    </div>
+
+                    <div class="lg:col-span-4 custom-bg-primary p-5 rounded-2xl border custom-border flex flex-col gap-4">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-orange-500">Nama Klien</span>
+                            <p class="text-sm font-bold mt-1 custom-text-primary" id="modal-client">Aetheria Ltd.</p>
+                        </div>
+                        <div class="border-t custom-border pt-3">
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-orange-500">Kategori Pekerjaan</span>
+                            <p class="text-sm font-bold mt-1 custom-text-primary" id="modal-category">Branding & Logo</p>
+                        </div>
+                        <div class="border-t custom-border pt-3">
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-orange-500">Aplikasi / Alat</span>
+                            <div class="flex flex-wrap gap-1 mt-1.5" id="modal-tools">
+                                <span class="text-[10px] bg-orange-500/10 text-orange-500 px-2.5 py-1 rounded-full font-semibold border border-orange-500/10">Illustrator</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="px-6 py-4 border-t custom-border flex justify-end gap-3 custom-bg-secondary sticky bottom-0 z-20">
+                <button onclick="closePortfolioModal()" class="px-6 py-2.5 rounded-full border custom-border custom-text-primary text-xs font-bold hover:bg-orange-500/5 transition-all">Tutup</button>
+                <a href="#contact" onclick="closePortfolioModal()" class="px-6 py-2.5 rounded-full bg-orange-500 text-white text-xs font-bold hover:bg-orange-600 transition-all shadow-md shadow-orange-500/10">Bicara Proyek Serupa</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER SECTION -->
+    <footer class="border-t custom-border custom-bg-secondary py-12 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <!-- Brand Logo Footer (Updated with Imgbox PNG Logo Graphic) -->
+            <a href="#" class="flex items-center group">
+                <img src="https://images2.imgbox.com/fa/b0/AnoZb686_o.png" alt="AF Graphees Logo Footer" class="h-8 w-auto object-contain transform transition-transform group-hover:scale-105 duration-300">
+            </a>
+
+            <p class="text-xs custom-text-secondary text-center md:text-left">
+                &copy; 2026 AF GRAPHEES - Ahmad Faisin, SE.
+            </p>
+
+            <div class="flex items-center gap-4">
+                <a href="https://www.instagram.com/a.faaiziinn/" target="_blank" class="w-9 h-9 rounded-full border custom-border flex items-center justify-center custom-text-secondary hover:text-orange-500 hover:border-orange-500 transition-colors" title="Instagram Personal">
+                    <i class="fa-brands fa-instagram text-sm"></i>
+                </a>
+                <a href="https://www.instagram.com/af.graphees/" target="_blank" class="w-9 h-9 rounded-full border custom-border flex items-center justify-center custom-text-secondary hover:text-orange-500 hover:border-orange-500 transition-colors" title="Instagram Portfolio">
+                    <i class="fa-brands fa-instagram text-sm"></i>
+                </a>
+                <a href="https://www.tiktok.com/@faaiziinn" target="_blank" class="w-9 h-9 rounded-full border custom-border flex items-center justify-center custom-text-secondary hover:text-orange-500 hover:border-orange-500 transition-colors" title="TikTok">
+                    <i class="fa-brands fa-tiktok text-sm"></i>
+                </a>
+                <a href="https://wa.me/6285117773960" target="_blank" class="w-9 h-9 rounded-full border custom-border flex items-center justify-center custom-text-secondary hover:text-orange-500 hover:border-orange-500 transition-colors" title="WhatsApp">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- STICKY CLOSE BUTTON -->
+    <div id="sticky-close-container" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 translate-y-10 transition-all duration-500 hidden">
+        <button onclick="toggleExtendedPortfolio()" class="w-14 h-14 bg-orange-500 hover:bg-orange-600 text-white rounded-full shadow-2xl shadow-orange-500/40 flex items-center justify-center border border-orange-500/20 pointer-events-auto active:scale-95 transition-all" title="Tutup Galeri Detail">
+            <i class="fa-solid fa-circle-chevron-up text-xl"></i>
+        </button>
+    </div>
+
+    <!-- JAVASCRIPT FUNCTIONS -->
+    <script>
+        const projectData = {
+            101: {
+                title: "PT. KARYA RAFA MADINA",
+                category: "Logo & Identitas",
+                client: "PT. Karya Rafa Madina",
+                image: "https://images2.imgbox.com/8d/fa/A4NCb8yY_o.jpg",
+                desc: "Logo PT. Karya Rafa Madina dirancang sebagai representasi visual dari nilai-nilai utama perusahaan, yaitu profesionalisme, pertumbuhan, kolaborasi, dan keberlanjutan bisnis. Bentuk logo menggabungkan unsur inisial perusahaan yang dikembangkan menjadi simbol modern dan dinamis untuk mencerminkan perusahaan yang bergerak pada berbagai lini usaha dengan visi jangka panjang.",
+                tools: ["Sketchbook Pro", "Affinity By Canva"]
+            },
+            301: {
+                title: "FEED INSTAGRAM",
+                category: "Sosial Media",
+                client: "Arka Parfume",
+                image: "https://images2.imgbox.com/0a/d4/IOIPIIxP_o.jpg",
+                desc: "Proyek Desain feed Instagram yang kami handle secara profesional melalui konsep desain minimalis, dan sesuai dengan branding yang dibangun oleh klien. Adapun materi tetap mematuhi ketentuan dan brief dari klien.",
+                tools: ["Affinity By Canva", "Photoshop"]
+            },
+            401: {
+                title: "ARKA PERFUME",
+                category: "Logo & Identitas",
+                client: "Arka Perfume",
+                image: "https://images2.imgbox.com/fb/27/1JWiYUkK_o.jpg",
+                desc: "Secara keseluruhan bentuk ini merupakan logo inisial dari nama brand/ toko parfum ini, dengan modifikasi huruf serta visualisasi nilai kemewa-han yang dikandung di dalamnya. Hal ini ditujukan untuk menegaskan visi misi dan profesionalitas kerja kedepannya.",
+                tools: ["Sketchbook Pro", "Corel Draw"]
+            },
+            102: {
+                title: "SAMPUL BUKU \"BALAGHAH PRAKTIS\"",
+                category: "Desain Sampul Buku",
+                client: "CV. Pustaka Muba",
+                image: "https://images2.imgbox.com/8a/e4/YjzpHn8i_o.jpg",
+                desc: "Desain Sampul Buku dengan konsep desain islami modern yang kami rancang untuk buku \"Balaghah Praktis\" diterbitkan Oleh CV. Pustaka Muba.",
+                tools: ["Photoshop"]
+            },
+            201: {
+                title: "GEBYAR PENGAJIAN AKBAR-19",
+                category: "Logo & Identitas",
+                client: "PP. Nurul Ulum Bunangkah",
+                image: "https://images2.imgbox.com/c1/82/n1zHl10R_o.jpg",
+                desc: "Angka 19 pada logo ini dibentuk secara proporsional dengan konsep kaligrafi modern untuk merepresen-tasikan nilai religius yang selalu terta-nam pada diri pesantren, sehingga seluruh aktivitas pesantren akan tetap sama dengan apa yang diajarkan oleh agama disamping keberlanjutan peradaban dunia modern.",
+                tools: ["Sketch book", "Corel Draw"]
+            },
+            501: {
+                title: "PAMFLET & POSTER EVENT",
+                category: "Pamflet & Poster",
+                client: "Motosphere 2025",
+                image: "https://images2.imgbox.com/16/f1/2UCfCJD6_o.jpg",
+                desc: "Pamflet dan Poster ini didesain untuk memenuhi kebutuhan Event klien kami dengan konsep otomotif modern.",
+                tools: ["Affinity By Canva"]
+            }
+        };
+
+        // Theme switching controller
+        function setTheme(themeName) {
+            const body = document.body;
+            body.classList.remove('theme-midnight', 'theme-cream', 'theme-minimalist');
+            body.classList.add(`theme-${themeName}`);
+
+            const buttons = ['midnight', 'cream', 'minimalist'];
+            buttons.forEach(btn => {
+                const el = document.getElementById(`btn-${btn}`);
+                if (el) {
+                    el.classList.remove('bg-orange-500', 'text-white', 'shadow');
+                    el.classList.add('hover:text-orange-500', 'text-slate-400');
+                }
+            });
+
+            const activeEl = document.getElementById(`btn-${themeName}`);
+            if (activeEl) {
+                activeEl.classList.add('bg-orange-500', 'text-white', 'shadow');
+                activeEl.classList.remove('hover:text-orange-500', 'text-slate-400');
+            }
+        }
+
+        // Toggle Mobile Hamburger menu dropdown
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.className = 'fa-solid fa-xmark text-lg';
+            } else {
+                menu.classList.add('hidden');
+                icon.className = 'fa-solid fa-bars-staggered text-lg';
+            }
+        }
+
+        // Expanded Portfolio Toggle Logic with Sticky Close Button handlers
+        function toggleExtendedPortfolio() {
+            const container = document.getElementById('extended-portfolio-container');
+            const btnIcon = document.getElementById('expand-btn-icon');
+            const stickyClose = document.getElementById('sticky-close-container');
+
+            if (container.classList.contains('hidden')) {
+                container.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    container.style.height = "auto";
+                    container.style.opacity = "1";
+                    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Trigger render resizing
+                    window.dispatchEvent(new Event('resize'));
+                }, 10);
+
+                btnIcon.className = "fa-solid fa-chevron-up text-lg transition-transform duration-500 group-hover:text-white";
+                
+                // Show sticky close button
+                stickyClose.classList.remove('hidden', 'opacity-0', 'translate-y-10');
+                stickyClose.classList.add('flex', 'opacity-100', 'translate-y-0');
+            } else {
+                container.style.height = "0";
+                container.style.opacity = "0";
+                
+                setTimeout(() => {
+                    container.classList.add('hidden');
+                    document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 700);
+
+                btnIcon.className = "fa-solid fa-chevron-down text-lg transition-transform duration-500 animate-bounce group-hover:text-white";
+                
+                // Hide sticky close button
+                stickyClose.classList.remove('opacity-100', 'translate-y-0');
+                stickyClose.classList.add('opacity-0', 'translate-y-10');
+                setTimeout(() => stickyClose.classList.add('hidden'), 500);
+            }
+        }
+
+        // Portfolio Modal controls
+        function openPortfolioModal(id) {
+            const data = projectData[id];
+            if (!data) return;
+
+            document.getElementById('modal-category-badge').innerText = data.category;
+            document.getElementById('modal-category').innerText = data.category;
+            document.getElementById('modal-image').src = data.image;
+            document.getElementById('modal-image').alt = data.title;
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-desc').innerText = data.desc;
+            document.getElementById('modal-client').innerText = data.client;
+
+            const toolsContainer = document.getElementById('modal-tools');
+            toolsContainer.innerHTML = '';
+            data.tools.forEach(tool => {
+                const badge = document.createElement('span');
+                badge.className = "text-[10px] bg-orange-500/10 text-orange-500 px-2.5 py-1 rounded-full font-semibold border border-orange-500/10";
+                badge.innerText = tool;
+                toolsContainer.appendChild(badge);
+            });
+
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        // Close Portfolio modal manually
+        function closePortfolioModal() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto'; 
+        }
+
+        /**
+         * SHOW CUSTOM DESIGN TOAST NOTIFICATION
+         * @param {string} type - 'success' or 'error'
+         * @param {string} title - Judul notifikasi
+         * @param {string} message - Deskripsi pesan
+         */
+        function showToast(type, title, message) {
+            const toast = document.getElementById('toast');
+            const toastCard = document.getElementById('toast-card');
+            const toastIconBg = document.getElementById('toast-icon-bg');
+            const toastIcon = document.getElementById('toast-icon');
+            const toastTitle = document.getElementById('toast-title');
+            const toastDesc = document.getElementById('toast-desc');
+
+            if (type === 'success') {
+                toastCard.className = "bg-emerald-950 border border-emerald-500 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3";
+                toastIconBg.className = "w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-white shrink-0";
+                toastIcon.className = "fa-solid fa-check text-sm";
+            } else {
+                toastCard.className = "bg-rose-950 border border-rose-500 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3";
+                toastIconBg.className = "w-8 h-8 rounded-full bg-rose-500 flex items-center justify-center text-white shrink-0";
+                toastIcon.className = "fa-solid fa-circle-exclamation text-sm";
+            }
+
+            toastTitle.innerText = title;
+            toastDesc.innerText = message;
+
+            // Animate In
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateY(0)';
+            toast.style.pointerEvents = 'auto';
+
+            // Automatic Animate Out after 6 seconds
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(10px)';
+                toast.style.pointerEvents = 'none';
+            }, 6000);
+        }
+
+        /**
+         * STREAMING_CHUNK: Validating form and directing to WhatsApp...
+         * DYNAMIC DROPDOWN & INPUT VISIBILITY HANDLER
+         */
+        function checkCategorySelection(val) {
+            const otherContainer = document.getElementById('other_category_container');
+            const otherInput = document.getElementById('other_category_input');
+            
+            if (val === 'Lainnya') {
+                otherContainer.classList.remove('hidden');
+                otherInput.required = true;
+                otherInput.focus();
+            } else {
+                otherContainer.classList.add('hidden');
+                otherInput.required = false;
+                otherInput.value = '';
+            }
+        }
+
+        /**
+         * HANDLER UNTUK EKSPOR DISKUSI FORMULIR LANGSUNG KE WHATSAPP
+         */
+        function handleWhatsAppSubmit(event) {
+            event.preventDefault();
+
+            const nameInput = document.getElementById('name').value.trim();
+            const selectCategory = document.getElementById('category_select').value;
+            const otherCategoryInput = document.getElementById('other_category_input').value.trim();
+            const additionalMessage = document.getElementById('message').value.trim();
+
+            let finalCategory = selectCategory;
+            if (selectCategory === 'Lainnya') {
+                finalCategory = otherCategoryInput || 'Lainnya';
+            }
+
+            if (!nameInput || !finalCategory) {
+                showToast('error', 'Formulir Belum Lengkap', 'Silakan masukkan nama Anda dan pilih kategori desain.');
+                return;
+            }
+
+            // Menyusun format pesan WhatsApp sesuai instruksi user
+            // Halo, Nama Saya [Nama], saya bermaksud untuk  melakukan kerjasama proyek desain [Pilihan kategori desain].
+            // [Pesan tambahan]
+            let formattedText = `Halo, Nama Saya ${nameInput}, saya bermaksud untuk  melakukan kerjasama proyek desain ${finalCategory}.\n`;
+            
+            if (additionalMessage) {
+                formattedText += `${additionalMessage}`;
+            }
+
+            // URL Encode the final message
+            const urlEncodedMessage = encodeURIComponent(formattedText);
+            const waTargetUrl = `https://wa.me/6285117773960?text=${urlEncodedMessage}`;
+
+            // Memberikan notifikasi toast sukses bahwa data sedang diarahkan ke WhatsApp
+            showToast(
+                'success', 
+                'Menghubungkan ke WhatsApp...', 
+                'Pesan Anda sudah siap. Kami sedang mengalihkan Anda ke WhatsApp.'
+            );
+
+            // Buka link WhatsApp tujuan di tab baru setelah jeda pendek (estetika loading toast)
+            setTimeout(() => {
+                window.open(waTargetUrl, '_blank');
+            }, 1000);
+        }
+
+        // Scroll Reveal effect handler using IntersectionObserver
+        document.addEventListener("DOMContentLoaded", function () {
+            const reveals = document.querySelectorAll(".reveal");
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            reveals.forEach(reveal => {
+                observer.observe(reveal);
+            });
+        });
+
+        // Interactive Vector Pen-tool playground in the About Section
+        const interactiveBox = document.getElementById('interactive-box');
+        const bezierPath = document.getElementById('bezier-path');
+        const guideLine1 = document.getElementById('guide-line1');
+        const guideLine2 = document.getElementById('guide-line2');
+        const controlNode1 = document.getElementById('control-node1');
+        const controlNode2 = document.getElementById('control-node2');
+
+        if (interactiveBox) {
+            interactiveBox.addEventListener('mousemove', function (e) {
+                const rect = interactiveBox.getBoundingClientRect();
+                const x = e.clientX - rect.left; 
+                const y = e.clientY - rect.top;  
+
+                const normX = (x / rect.width) * 380;
+                const normY = (y / rect.height) * 350;
+
+                const p1x = normX;
+                const p1y = normY;
+                const p2x = 380 - normX;
+                const p2y = 350 - normY;
+
+                bezierPath.setAttribute('d', `M 50 150 C ${p1x} ${p1y}, ${p2x} ${p2y}, 330 150`);
+                
+                guideLine1.setAttribute('x2', p1x);
+                guideLine1.setAttribute('y2', p1y);
+                guideLine2.setAttribute('x2', p2x);
+                guideLine2.setAttribute('y2', p2y);
+
+                controlNode1.setAttribute('cx', p1x);
+                controlNode1.setAttribute('cy', p1y);
+                controlNode2.setAttribute('cx', p2x);
+                controlNode2.setAttribute('cy', p2y);
+            });
+
+            interactiveBox.addEventListener('mouseleave', function () {
+                bezierPath.setAttribute('d', 'M 50 150 C 120 40, 260 260, 330 150');
+                
+                guideLine1.setAttribute('x2', 120);
+                guideLine1.setAttribute('y2', 40);
+                guideLine2.setAttribute('x2', 260);
+                guideLine2.setAttribute('y2', 260);
+
+                controlNode1.setAttribute('cx', 120);
+                controlNode1.setAttribute('cy', 40);
+                controlNode2.setAttribute('cx', 260);
+                controlNode2.setAttribute('cy', 260);
+            });
+        }
+
+        // Shrink Navigation bar height & Sticky Button controller on scroll event
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('main-header');
+            if (header) {
+                if (window.scrollY > 50) {
+                    header.classList.remove('py-4');
+                    header.classList.add('py-2', 'shadow-lg');
+                } else {
+                    header.classList.remove('py-2', 'shadow-lg');
+                    header.classList.add('py-4');
+                }
+            }
+
+            // Sticky button visibility optimization on scroll position
+            const stickyClose = document.getElementById('sticky-close-container');
+            const container = document.getElementById('extended-portfolio-container');
+            if (container && !container.classList.contains('hidden')) {
+                const portfolioSec = document.getElementById('portfolio');
+                const rect = portfolioSec.getBoundingClientRect();
+                if (rect.top > window.innerHeight) {
+                    stickyClose.classList.add('opacity-0', 'translate-y-10');
+                    stickyClose.classList.remove('opacity-100', 'translate-y-0');
+                } else {
+                    stickyClose.classList.remove('opacity-0', 'translate-y-10');
+                    stickyClose.classList.add('opacity-100', 'translate-y-0');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
